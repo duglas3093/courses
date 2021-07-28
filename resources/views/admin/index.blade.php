@@ -3,11 +3,11 @@
 @section('title', 'Coders Free')
 
 @section('content_header')
-    <h1>Coders Free</h1>
+    <h1>Cursmooc</h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel. :D</p>
+    <p>Bienvenido al panel de administración. :D</p>
 @stop
 
 @section('css')

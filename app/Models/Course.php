@@ -15,6 +15,7 @@ class Course extends Model
     const BORRADOR = 1;
     const REVISION = 2;
     const PUBLICADO = 3;
+    const PRIVADO = 4;
 
     //Query Scope
     public function scopeCategory($query, $category_id){

@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\PriceController;
 Route::get('', [HomeController::class, 'index'])->middleware('can:Ver dashboard')->name('home');
 
 Route::resource('roles', RoleController::class)->names('roles');
+
 Route::resource('users', UserController::class)->only(['index', 'edit','update'])->names('users');
 
 Route::resource('categories', CategoryController::class)->names('categories'); 
@@ -23,9 +24,15 @@ Route::resource('prices', PriceController::class)->names('prices');
 
 Route::get('course', [CourseController::class, 'index'])->name('courses.index');
 
+Route::get('course/published',[CourseController::class, 'published_course'])->name('courses.published'); 
+
+Route::get('course/private_courses',[CourseController::class, 'private_courses'])->name('courses.private_courses'); 
+
 Route::get('course/{course}', [CourseController::class, 'show'])->name('courses.show');
 
 Route::post('course/{course}/approved', [CourseController::class, 'approved'])->name('courses.approved');
+
+Route::post('course/{course}/private_course', [CourseController::class, 'private_course'])->name('courses.private_course');
 
 Route::get('course/{course}/observation', [CourseController::class, 'observation'])->name('courses.observation');
 

@@ -65,4 +65,36 @@ class CourseController extends Controller
         return redirect()->route('admin.courses.index')->with('info','El curos se ha rechazado con exitó');
 
     }
+
+    public function published_course(){
+        $courses = Course::where('status', 3)->paginate();
+        return view('admin.courses.published_course', compact('courses'));
+    }
+
+    public function private_course(Course $course){
+        $this->authorize('revision', $course);
+
+        if (!$course->lessons || !$course->goals || !$course->requirements || !$course->image) {
+            return back()->with('info', 'No se puede piblicar un curso que no este completo');
+        }
+
+        $course->status = 4;
+        $course->save();
+
+        // Enviar el correo electronico
+        $mail = new ApprovedCourse($course);
+
+        // con el metodo de sync en el .env  QUEUE_CONNECTION=sync
+        // Mail::to($course->teacher->email)->send($mail);
+
+        // con el metodo de database en el .env QUEUE_CONNECTION=database
+        Mail::to($course->teacher->email)->queue($mail);
+
+        return redirect()->route('admin.courses.index')->with('info','El curso se aprobo como curso privado');
+    }
+
+    public function private_courses(){
+        $courses = Course::where('status', 4)->paginate();
+        return view('admin.courses.published_course', compact('courses'));
+    }
 }

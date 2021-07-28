@@ -278,9 +278,22 @@ return [
             'icon' => 'fab fa-fw fa-cc-visa',
         ],
         [
-            'text' => 'Pendientes de aprobación',
-            'route'  => 'admin.courses.index',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Cursos',
+            'submenu' => [
+                [
+                    'text' => 'Pendientes de aprobación',
+                    'route'  => 'admin.courses.index',
+                ],
+                [
+                    'text' => 'Publicados',
+                    'route'  => 'admin.courses.published',
+                ],
+                [
+                    'text' => 'Privados',
+                    'route'  => 'admin.courses.private_courses',
+                ],
+            ],
+            'icon' => 'fas fa-fw fa-chalkboard-teacher',
         ],
         
     ],

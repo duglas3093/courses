@@ -110,10 +110,21 @@
 
                         @csrf
 
-                        <button type="submit" class="btn btn-primary w-full">Aprobar curso</button>
+                        <button type="submit" class="btn btn-primary w-full">
+                            Aprobar como curso publico
+                        </button>
                     </form>
 
                     <a href="{{ route('admin.courses.observation', $course) }}" class="btn btn-danger w-full block text-center mt-4">Observar cruso</a>
+
+                    <form action="{{ route('admin.courses.private_course', $course) }}" class="mt-4" method="POST">
+                        @csrf
+
+                        <button type="submit" class="btn bg-yellow-300 w-full block">
+                            Aprobar como curso privado
+                        </button>
+                        
+                    </form>
                 </div>
             </section>
         </div>
