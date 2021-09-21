@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -25,10 +26,20 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        return User::create([
+        $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+        //Verificacion que tenga el dominio umss.edu
+        $email = $input['email'];
+        $caracter = "@";
+        $pos = strpos($email, $caracter);
+        $dominio = substr($email, $pos, strlen($email));
+        
+        if(strcasecmp($dominio,"@umss.edu") == 0){
+            $user->assignRole('Privilegio');
+        }
+        return $user;
     }
 }

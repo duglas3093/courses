@@ -47,5 +47,8 @@ class PermissionSeeder extends Seeder
         Permission::create([
             'name' => 'Editar usuarios'
         ]);
+        // Permission::create([
+        //     'name' => 'Ver cursos privados'
+        // ]);
     }
 }

@@ -49,7 +49,8 @@
 <div class="grid grid-cols-2 gap-4">
     <figure>
         @isset($course->image)
-            <img id="picture" class="w-full h-64 object-cover object-center" src="{{ Storage::url($course->image->url) }}" alt="">
+            {{-- <img id="picture" class="w-full h-64 object-cover object-center" src="{{ Storage::url($course->image->url) }}" alt=""> --}}
+            <img id="picture" class="w-full h-64 object-cover object-center" src="{{ asset('storage/'.$course->image->url) }}" alt="">
         @else
             <img id="picture" class="w-full h-64 object-cover object-center" src="https://cdn.pixabay.com/photo/2017/12/29/11/46/coffee-3047385_960_720.jpg" alt="">
         @endisset

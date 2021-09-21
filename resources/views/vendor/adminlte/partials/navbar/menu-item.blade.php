@@ -1,11 +1,11 @@
-@inject('menuItemHelper', \JeroenNoten\LaravelAdminLte\Helpers\MenuItemHelper)
+@inject('menuItemHelper', '\JeroenNoten\LaravelAdminLte\Helpers\MenuItemHelper')
 
-@if ($menuItemHelper->isSearchBar($item))
+{{-- @if ($menuItemHelper->isSearchBar($item)) --}}
 
     {{-- Search form --}}
-    @include('adminlte::partials.navbar.menu-item-search-form')
+    {{-- @include('adminlte::partials.navbar.menu-item-search-form') --}}
 
-@elseif ($menuItemHelper->isSubmenu($item))
+@if ($menuItemHelper->isSubmenu($item))
 
     {{-- Dropdown menu --}}
     @include('adminlte::partials.navbar.menu-item-dropdown-menu')

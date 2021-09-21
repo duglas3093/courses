@@ -53,4 +53,8 @@ class UserController extends Controller
 
         return redirect()->route('admin.users.edit', $user);
     }
+
+    public function get_user(){
+        
+    }
 }

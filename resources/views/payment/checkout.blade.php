@@ -6,7 +6,8 @@
             <div class="card-body">
 
                 <article class="flex items-center">
-                    <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{ Storage::url($course->image->url) }}" alt="">
+                    {{-- <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{ Storage::url($course->image->url) }}" alt=""> --}}
+                    <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{ asset('storage/'.$course->image->url) }}" alt="">
                     <h1 class="text-lg ml-2">{{ $course->title }}</h1>
                     <p class="text-xl font-bold ml-auto">US$ {{ $course->price->value }}</p>
                 </article>

@@ -35,7 +35,8 @@
                                 <div class="d-flex">
                                     <div class="flexbox">
                                         <figure class="mr-2">
-                                            <img class="img-circle" height="50px" width="50px" src="{{ Storage::url($course->image->url) }}" alt="">
+                                            {{-- <img class="img-circle" height="50px" width="50px" src="{{ Storage::url($course->image->url) }}" alt=""> --}}
+                                            <img class="img-circle" height="50px" width="50px" src="{{ asset('storage/'.$course->image->url) }}" alt="">
                                         </figure>
                                     </div>
                                     <div>

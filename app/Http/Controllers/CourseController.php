@@ -11,6 +11,10 @@ class CourseController extends Controller
         return view('courses.index');
     }
 
+// public function private_courses(){
+    
+// }
+
     public function show(Course $course){
     
         $this->authorize('published', $course);
