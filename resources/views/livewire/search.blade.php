@@ -7,7 +7,16 @@
         <ul class="absolute z-50 left-0 w-full bg-white mt-1 rounded-lg overflow-hidden">
             @forelse ($this->results as $result)
                 <li class="leading-10 px-5 text-sm cursor-pointer hover:bg-gray-300">
-                    <a href="{{ route('courses.show', $result) }}">{{ $result->title }}</a>
+                    @if ($result->status == 3)
+                        <a href="{{ route('courses.show', $result) }}">{{ $result->title }}</a>    
+                    @else
+                        @if ($result->status == 4)
+                            @can('Ver cursos privados')
+                                <a href="{{ route('courses.show', $result) }}">{{ $result->title }}</a>
+                            @endcan                            
+                        @endif
+                    @endif
+                    
                 </li>
             @empty
                 <li class="leading-10 px-5 text-sm cursor-pointer hover:bg-gray-300">

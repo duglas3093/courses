@@ -11,17 +11,22 @@ class CourseController extends Controller
         return view('courses.index');
     }
 
-// public function private_courses(){
-    
-// }
+    public function private_courses(){
+        return view('courses.private');
+    }
 
     public function show(Course $course){
     
         $this->authorize('published', $course);
+
+        $status = 3;
+        if ($course->status != 3) {
+            $status = 4;
+        }
     
         $similares = Course::where('category_id', $course->category_id)
                             ->where('id','!=',$course->id)
-                            ->where('status',3)
+                            ->where('status',$status)
                             ->latest('id')
                             ->take(5)
                             ->get();

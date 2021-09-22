@@ -24,7 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('cursos', [CourseController::class, 'index'])->name('courses.index');
 
-// Route::get('privados', [CourseController::class, 'private_courses'])->name('courses.private');
+Route::get('private', [CourseController::class, 'private_courses'])->name('private');
 
 Route::get('cursos/{course}', [CourseController::class, 'show'])->name('courses.show');
 

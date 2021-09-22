@@ -13,12 +13,10 @@ class Search extends Component
     {
         return view('livewire.search');
     }
-    //mundo
-    // Hola mundo como estas 
-
+    
     public function getResultsProperty(){
         return Course::where('title','LIKE','%'.$this->search.'%')
-                    ->where('status',3)
+                    ->where('status','>=',3)
                     ->take(8)
                     ->get();
     }

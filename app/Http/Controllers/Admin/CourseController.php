@@ -29,7 +29,7 @@ class CourseController extends Controller
         $this->authorize('revision', $course);
 
         if (!$course->lessons || !$course->goals || !$course->requirements || !$course->image) {
-            return back()->with('info', 'No se puede piblicar un curso que no este completo');
+            return back()->with('info', 'No se puede publicar un curso que no este completo');
         }
 
         $course->status = 3;

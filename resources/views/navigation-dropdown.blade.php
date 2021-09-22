@@ -1,5 +1,6 @@
 @php
-    $nav_links = [
+    $privados = "";
+    $links = [
         [
             'name' => 'Inicio',
             'route' => route('home'),
@@ -11,6 +12,22 @@
             'active' => request()->routeIs('courses.*'),
         ]
     ];
+@endphp
+@can('Ver cursos privados')
+    @php
+        $privados =  [[
+                        'name' => 'Contenido Especial',
+                        'route' => route('private'),            
+                        'active' => request()->routeIs('private'),
+                    ]];
+    @endphp
+@endcan
+@php
+    if ($privados != "") {
+        $nav_links = array_merge($links, $privados);
+    }else{
+        $nav_links = $links;
+    }
 @endphp
 
 

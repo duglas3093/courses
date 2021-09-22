@@ -26,7 +26,8 @@ class CoursePolicy
     }
 
     public function published(?User $user, Course $course){
-        if ($course->status == 3) {
+        //permite mostrar cursos publicados como publicos o privados
+        if ($course->status == 3 || $course->status == 4) {
             return true;
         }else{
             return false;
