@@ -20,15 +20,17 @@ class CourseStatus extends Component
                 $this->current = $lesson;
                 break;
             }
-        }
+        } 
 
         if (!$this->current) {
             $this->current = $course->lessons->last();
             // redirect('www.google.com');
         }
 
+        if(auth()->user()->id != 1){
+            $this->authorize('enrolled', $course);
+        }
         // autorizacion
-        $this->authorize('enrolled', $course);
     }
 
     public function render()
